@@ -1,25 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
+import React, { useState } from 'react';
+import { Route, Switch } from 'react-router-dom';
+import NavBar from './containers/Navbar/Navbar';
+import Bikes from './containers/Bikes/Bikes';
+import Helmet from './containers/Helmet/Helmet';
+import Products from './assets/products';
+import OperationContext from './Context/OperationContext';
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  const [products] = useState(Products)
+  return (<div>
+    <OperationContext.Provider value={products} >
+      <Route component={NavBar} />
+      <Switch className="App">
+        <Route exact path="/" component={() => Bikes(products)} />
+        <Route exact path="/accessory" component={() => Helmet(products)} />
+      </Switch>
+    </OperationContext.Provider>
+  </div>
   );
 }
 
