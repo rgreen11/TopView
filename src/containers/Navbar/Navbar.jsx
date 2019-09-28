@@ -12,7 +12,7 @@ function Navbar(props) {
     <header className="header">
       <div className="header-container">
         <PageName name={name} />
-        <Logo />
+        <Logo products={props.products} />
       </div>
     </header>
   );

@@ -1,11 +1,10 @@
-let copyPriceQuantity = {};
+let copyPriceQuantity = {}
 
 class Operations {
     constructor(price) {
         this.price = price;
 
     }
-
 
     add = e => {
         if (copyPriceQuantity.hasOwnProperty(e.target.name)) {

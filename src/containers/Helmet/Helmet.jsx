@@ -2,9 +2,9 @@ import React from "react";
 import Card from "../../components/card/card";
 import Filter from "../../components/filter/filter";
 import NextPageButton from "../../components/button/button.component";
+
 function Helmet({ products }) {
   const helmets = Filter(products, "accessory");
-
   return (
     <>
       <div className="container">

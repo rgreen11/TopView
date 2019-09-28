@@ -1,19 +1,20 @@
-import React, { useState, useEffect } from "react";
-import OperationContext from "../../Context/OperationContext";
-
-function Logo() {
-  console.log(OperationContext.Provider);
-  //   const quantityPrice = OperationContext.Consumer;
-  const [items, setItems] = useState({});
+import React, { useState, useEffect, useContext } from "react";
+import NumItemsPurchase from "../../Context/Context";
+import Filter from "../filter/filter";
+function Logo({ products }) {
+  const [items, setItems] = useState("");
+  const { itemsPurchase } = useContext(NumItemsPurchase);
+  const bikes = Filter(products, "bike");
   useEffect(() => {
-    setItems();
-  }, []);
+    console.log("in logo:", itemsPurchase);
+    console.log(bikes);
+  }, [itemsPurchase]);
+
+  if (items === {}) return;
   return (
     <div>
       <h1>Logo</h1>
-      <OperationContext.Consumer>
-        {value => console.log(value)}
-      </OperationContext.Consumer>
+      {/* <span>{itemsPurchase[products.name].price}</span> */}
     </div>
   );
 }

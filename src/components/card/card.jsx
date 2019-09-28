@@ -1,21 +1,18 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect } from "react";
 import "./card.scss";
 import Operations from "../operations/operations";
-// import OperationContext from "../../Context/OperationContext";
+import NumItemsPurchase from "../../Context/Context";
 
 function Card({ image, name, price }) {
-  const [priceQuantity, setPriceQuantity] = useState({});
+  const { itemsPurchase, setItemsPurchase } = useContext(NumItemsPurchase);
   const operation = new Operations(price);
-
-  // OperationContext.Provider = priceQuantity;
 
   return (
     <div className="container-card">
-      {/* <OperationContext.Provider value={{ priceQuantity: priceQuantity }} /> */}
       <div
         className="container-card-holder"
         onClick={e => {
-          setPriceQuantity(operation.add(e));
+          setItemsPurchase(operation.add(e));
         }}
       >
         <div className="container-card-holder_image">
