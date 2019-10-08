@@ -1,20 +1,33 @@
 import React, { useState, useEffect, useContext } from "react";
+import "./logo.scss";
 import NumItemsPurchase from "../../Context/Context";
-import Filter from "../filter/filter";
-function Logo({ products }) {
-  const [items, setItems] = useState("");
-  const { itemsPurchase } = useContext(NumItemsPurchase);
-  const bikes = Filter(products, "bike");
-  useEffect(() => {
-    console.log("in logo:", itemsPurchase);
-    console.log(bikes);
-  }, [itemsPurchase]);
+import CartDropDown from "../cart-dropdown/cart-dropdown";
 
-  if (items === {}) return;
+function Logo({ products }) {
+  const [numProducts, setNumProducts] = useState("");
+  const [showCart, setShowCart] = useState(false);
+  const items = useContext(NumItemsPurchase);
+  console.log(products);
+  useEffect(() => {
+    setNumProducts(items.itemsPurchase);
+  }, [items, showCart]);
+
+  function handleClick() {
+    if (showCart) {
+      return setShowCart(false);
+    } else {
+      return setShowCart(true);
+    }
+  }
+
   return (
     <div>
-      <h1>Logo</h1>
-      {/* <span>{itemsPurchase[products.name].price}</span> */}
+      <h1 className="logo-click" onClick={handleClick}>
+        Cart
+      </h1>
+      {!showCart ? null : (
+        <CartDropDown numProducts={numProducts} products={products.products} />
+      )}
     </div>
   );
 }

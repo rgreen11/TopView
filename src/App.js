@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { Route, Switch } from 'react-router-dom';
 import NavBar from './containers/Navbar/Navbar';
 import Bikes from './containers/Bikes/Bikes';
-import Helmet from './containers/Helmet/Helmet';
 import Products from './assets/products';
 import NumItemsPurchase from './Context/Context';
+import "./App.scss";
 
 
 
@@ -13,11 +12,8 @@ function App() {
   const [itemsPurchase, setItemsPurchase] = useState({})
 
   return (<NumItemsPurchase.Provider value={{ itemsPurchase, setItemsPurchase }}>
-    <Route component={() => NavBar(Products)} />
-    <Switch className="App">
-      <Route exact path="/" component={() => Bikes(products)} />
-      <Route exact path="/accessory" component={() => Helmet(products)} />
-    </Switch>
+    <NavBar products={products} />
+    <Bikes products={products} />
   </NumItemsPurchase.Provider>
   );
 }

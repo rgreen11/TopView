@@ -3,4 +3,32 @@
     flex-direction: column;
     cursor: pointer;
     text-align: center;
+    backface-visibility: hidden;
+
+    .container-card-holder_image {
+        position: relative;
+        overflow: hidden;
+        color: white;
+        transition: all .5s;
+    }
+
+    .container-card-holder_image:hover {
+        color: black;
+        transform: scale(1.02);
+        backface-visibility: hidden;
+
+        &::before {
+            content: "";
+            position: absolute;
+            visibility: hidden;
+        }
+
+        &:active {
+            color: black;
+            transform: scale(1.01);
+            backface-visibility: hidden;
+        }
+    }
+
+
 }

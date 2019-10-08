@@ -2,10 +2,11 @@ import React from "react";
 import Card from "../../components/card/card";
 import Filter from "../../components/filter/filter";
 import "./Bikes.scss";
-import NextPageButton from "../../components/button/button.component";
+import Helmet from "../Helmet/Helmet";
+import Insurance from "../Insurance/Insurance.jsx";
 
 function Bikes({ products }) {
-  const bikes = Filter(products, "bike");
+  const bikes = Filter(products.products, "bike");
   return (
     <>
       <div className="container">
@@ -16,7 +17,10 @@ function Bikes({ products }) {
         })}
       </div>
       <div>
-        <NextPageButton />
+        <Helmet products={products} />
+      </div>
+      <div>
+        <Insurance products={products} />
       </div>
     </>
   );
